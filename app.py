@@ -26,7 +26,7 @@ NANO_GPT_API_URL = os.getenv(
     "NANO_GPT_API_URL", "https://nano-gpt.com/api/v1/chat/completions"
 )
 NANO_GPT_API_KEY = os.getenv("NANO_GPT_API_KEY", "")
-MODEL_NAME = "minimax/minimax-m2.5"
+MODEL_NAME = "meta-llama/llama-4-scout"
 
 CANVAS_WIDTH = 800
 CANVAS_HEIGHT = 600

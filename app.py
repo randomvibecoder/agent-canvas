@@ -1274,6 +1274,11 @@ HTML_TEMPLATE = """<!DOCTYPE html>
                 if (payload.type === 'chat_update') {
                     messages = payload.messages || [];
                     renderMessages();
+                    // Hide thinking if we received an assistant response
+                    const hasAssistant = messages.some(m => m.role === 'assistant');
+                    if (hasAssistant) {
+                        thinkingEl.style.display = 'none';
+                    }
                     return;
                 }
                 if (payload.type === 'canvas_update') {

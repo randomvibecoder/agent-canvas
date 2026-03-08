@@ -4,7 +4,7 @@ AI-powered canvas for creating matplotlib visualizations using natural language.
 
 ## Demo
 
-![Agent Canvas Demo](Pasted%20image.png)
+![Agent Canvas Demo](demo.png)
 
 ## Features
 

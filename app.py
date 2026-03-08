@@ -15,8 +15,17 @@ from fastapi import FastAPI, Response, WebSocket, WebSocketDisconnect
 from fastapi.responses import HTMLResponse, JSONResponse
 from pydantic import BaseModel
 
-NANO_GPT_API_URL = "https://nano-gpt.com/api/v1/chat/completions"
-NANO_GPT_API_KEY = "sk-nano-6d64c88b-f1cd-4aa3-8b8f-67cd9aae6b2d"
+import os
+from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+NANO_GPT_API_URL = os.getenv(
+    "NANO_GPT_API_URL", "https://nano-gpt.com/api/v1/chat/completions"
+)
+NANO_GPT_API_KEY = os.getenv("NANO_GPT_API_KEY", "")
 MODEL_NAME = "minimax/minimax-m2.5"
 
 CANVAS_WIDTH = 800
@@ -1390,6 +1399,16 @@ async def favicon() -> Response:
 @app.get("/api/state")
 async def get_state() -> JSONResponse:
     return JSONResponse({"messages": display_messages, "elements": canvas_elements})
+
+
+@app.post("/api/reset")
+async def reset() -> JSONResponse:
+    display_messages.clear()
+    llm_messages.clear()
+    canvas_elements.clear()
+    await broadcast_canvas_state()
+    await broadcast_chat_state()
+    return JSONResponse({"ok": True})
 
 
 @app.websocket("/ws")

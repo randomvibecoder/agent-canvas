@@ -2,6 +2,10 @@
 
 AI-powered canvas for creating matplotlib visualizations using natural language.
 
+## Demo
+
+![Agent Canvas Demo](Pasted%20image.png)
+
 ## Features
 
 - **Natural Language to Charts**: Describe what you want to visualize, and AI creates it
@@ -15,6 +19,8 @@ AI-powered canvas for creating matplotlib visualizations using natural language.
 
 ```bash
 pip install -r requirements.txt
+cp .env.example .env
+# Edit .env with your API key
 python app.py
 ```
 

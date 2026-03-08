@@ -1,0 +1,7 @@
+*.pyc
+__pycache__/
+.env
+.env.local
+*.mp4
+*.png
+!Pasted image.png
